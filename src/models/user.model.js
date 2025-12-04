@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
             lowercase: true,
             index: true
         },
-           fullname: {
+        fullname: {
             type: String,
             required: true,
             trim: true,
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, "password must required"]
         },
-        refreshtoken: {
+        refreshToken: {
             type: String
         }
 
@@ -85,9 +85,9 @@ userSchema.methods.generateRefreshToken =  function() {
         {
             _id: this._id
         },
-        process.env.REFREASH_TOKEN_KEY,
+        process.env.REFREASH_ACCESS_TOKEN,
         {
-            expiresIn: process.env.REFREASH_EXPIRY
+            expiresIn: process.env.REDRESH_EXPIRY
         }
     )
 }
