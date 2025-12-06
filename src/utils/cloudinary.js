@@ -32,4 +32,22 @@ const uploadOnCloudinary = async (localeFilePath) => {
     }
 }
 
-export { uploadOnCloudinary }
+const deleteOnCloudinary = async (filePath) => {
+    try {
+        if (!filePath) {
+            return null
+        };
+
+        const response = await cloudinary.uploader.destroy(
+            filePath.split("/").pop().split(".")[0],
+            { resource_type: "image" }
+        );
+
+        return response
+    } catch (error) {
+        console.log(error.message);
+        return null
+    }
+}
+
+export { uploadOnCloudinary, deleteOnCloudinary }
